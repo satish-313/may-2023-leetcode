@@ -30,15 +30,14 @@ function swapPairs(head: ListNode | null): ListNode | null {
     let ans = new ListNode(0, head);
     let cur: ListNode | null = ans;
 
-    while (cur?.next !== null && cur?.next.next !== null) {
-        let t1 = cur!.next;
-        let t2 = cur!.next.next;
+    while (cur !== null && cur.next !== null && cur.next.next !== null) {
+        let t1 = cur.next;
+        let t2 = cur.next.next;
 
-        cur!.next = t2;
+        cur.next = t2;
         t1.next = t2.next;
         t2.next = t1;
-        cur = cur.next.next;
-        console.log(cur)
+        cur = cur.next!.next;
     }
 
     return ans.next;
